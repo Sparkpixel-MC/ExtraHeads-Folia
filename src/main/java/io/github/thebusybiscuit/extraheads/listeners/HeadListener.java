@@ -18,10 +18,7 @@ import io.github.thebusybiscuit.slimefun4.implementation.items.weapons.SwordOfBe
 
 public class HeadListener implements Listener {
 
-    private final ExtraHeads plugin;
-
     public HeadListener(ExtraHeads plugin) {
-        this.plugin = plugin;
 
         plugin.getServer().getPluginManager().registerEvents(this, plugin);
     }

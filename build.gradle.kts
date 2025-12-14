@@ -57,9 +57,6 @@ bukkit {
     website = "https://github.com/SlimefunGuguProject/ExtraHeads"
     depend = listOf("Slimefun")
     softDepend = listOf("PlaceholderAPI", "GuizhanLibPlugin")
-    extra { map: MutableMap<String, Any> ->
-        map["folia-supported"] = true
-    }
 }
 
 tasks {
