@@ -12,10 +12,11 @@ repositories {
     maven("https://repo.papermc.io/repository/maven-public/")
     maven("https://jitpack.io")
     maven("https://repo.extendedclip.com/content/repositories/placeholderapi/")
+    maven("https://repo.menthamc.org/repository/maven-public/")
 }
 
 dependencies {
-    compileOnly("io.papermc.paper:paper-api:1.21.7-R0.1-SNAPSHOT")
+    compileOnly("me.earthme.luminol:luminol-api:1.21.8-R0.1-SNAPSHOT")
     compileOnly("com.github.SlimefunGuguProject:Slimefun4:2025.1")
     compileOnly("me.clip:placeholderapi:2.11.6")
     compileOnly("net.guizhanss:GuizhanLibPlugin:2.3.0")
@@ -24,7 +25,7 @@ dependencies {
 }
 
 group = "io.github.thebusybiscuit"
-version = "UNOFFICIAL"
+version = "1.2.8-Folia"
 
 java {
     disableAutoTargetJvm()
@@ -56,6 +57,9 @@ bukkit {
     website = "https://github.com/SlimefunGuguProject/ExtraHeads"
     depend = listOf("Slimefun")
     softDepend = listOf("PlaceholderAPI", "GuizhanLibPlugin")
+    extra { map: MutableMap<String, Any> ->
+        map["folia-supported"] = true
+    }
 }
 
 tasks {
