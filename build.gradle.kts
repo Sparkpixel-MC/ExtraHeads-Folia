@@ -2,7 +2,7 @@ plugins {
     id("java")
     id("maven-publish")
     id("io.freefair.lombok") version "8.7.1"
-    id("com.gradleup.shadow") version "8.3.6"
+    id("com.gradleup.shadow") version "9.3.0"
     id("de.eldoria.plugin-yml.bukkit") version "0.7.1"
     id("xyz.jpenilla.run-paper") version "2.3.1"
 }
@@ -57,6 +57,9 @@ bukkit {
     website = "https://github.com/SlimefunGuguProject/ExtraHeads"
     depend = listOf("Slimefun")
     softDepend = listOf("PlaceholderAPI", "GuizhanLibPlugin")
+    extra { map: MutableMap<String, Any> ->
+        map["folia-supported"] = true
+    }
 }
 
 tasks {
