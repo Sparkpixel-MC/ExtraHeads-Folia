@@ -1,0 +1,25 @@
+[versions]
+foliaApi = "26.2.build.7-beta"
+slimefun4 = "2025.1.2"
+placeholderapi = "2.11.6"
+guizhanLibPlugin = "2.3.0"
+bstats = "3.1.0"
+jsr305 = "3.0.2"
+lombokPlugin = "9.8.0"
+shadow = "9.6.1"
+pluginYml = "0.9.0"
+runPaper = "3.1.0"
+
+[libraries]
+folia-api = { module = "dev.folia:folia-api", version.ref = "foliaApi" }
+slimefun4 = { module = "com.github.SlimefunGuguProject:Slimefun4", version.ref = "slimefun4" }
+placeholderapi = { module = "me.clip:placeholderapi", version.ref = "placeholderapi" }
+guizhan-lib-plugin = { module = "net.guizhanss:GuizhanLibPlugin", version.ref = "guizhanLibPlugin" }
+bstats-bukkit = { module = "org.bstats:bstats-bukkit", version.ref = "bstats" }
+jsr305 = { module = "com.google.code.findbugs:jsr305", version.ref = "jsr305" }
+
+[plugins]
+lombok = { id = "io.freefair.lombok", version.ref = "lombokPlugin" }
+shadow = { id = "com.gradleup.shadow", version.ref = "shadow" }
+plugin-yml = { id = "de.eldoria.plugin-yml.bukkit", version.ref = "pluginYml" }
+run-paper = { id = "xyz.jpenilla.run-paper", version.ref = "runPaper" }

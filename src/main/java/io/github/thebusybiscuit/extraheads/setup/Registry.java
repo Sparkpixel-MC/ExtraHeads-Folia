@@ -1,8 +1,7 @@
 package io.github.thebusybiscuit.extraheads.setup;
 
-import java.util.EnumMap;
-import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 import javax.annotation.Nonnull;
 
@@ -17,8 +16,9 @@ import lombok.Getter;
 public class Registry {
 
     private final Config config;
-    private final Map<EntityType, SlimefunItem> heads = new EnumMap<>(EntityType.class);
-    private final Map<String, Map<EntityType, String>> entityNames = new HashMap<>();
+    // HeadListener 在各 Region 线程读取，ItemSetup 在启用时写入，需线程安全
+    private final Map<EntityType, SlimefunItem> heads = new ConcurrentHashMap<>();
+    private final Map<String, Map<EntityType, String>> entityNames = new ConcurrentHashMap<>();
 
     public Registry(@Nonnull Config config) {
         this.config = config;

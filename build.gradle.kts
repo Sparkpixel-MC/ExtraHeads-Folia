@@ -1,10 +1,10 @@
 plugins {
-    id("java")
-    id("maven-publish")
-    id("io.freefair.lombok") version "8.7.1"
-    id("com.gradleup.shadow") version "8.3.6"
-    id("de.eldoria.plugin-yml.bukkit") version "0.7.1"
-    id("xyz.jpenilla.run-paper") version "2.3.1"
+    java
+    `maven-publish`
+    alias(libs.plugins.lombok)
+    alias(libs.plugins.shadow)
+    alias(libs.plugins.plugin.yml)
+    alias(libs.plugins.run.paper)
 }
 
 repositories {
@@ -15,20 +15,20 @@ repositories {
 }
 
 dependencies {
-    compileOnly("io.papermc.paper:paper-api:1.21.11-R0.1-SNAPSHOT")
-    compileOnly("com.github.SlimefunGuguProject:Slimefun4:2025.1")
-    compileOnly("me.clip:placeholderapi:2.11.6")
-    compileOnly("net.guizhanss:GuizhanLibPlugin:2.3.0")
-    implementation("org.bstats:bstats-bukkit:3.1.0")
-    implementation("com.google.code.findbugs:jsr305:3.0.2")
+    compileOnly(libs.folia.api)
+    compileOnly(libs.slimefun4)
+    compileOnly(libs.placeholderapi)
+    compileOnly(libs.guizhan.lib.plugin)
+    implementation(libs.bstats.bukkit)
+    implementation(libs.jsr305)
 }
 
 group = "io.github.thebusybiscuit"
-version = "UNOFFICIAL"
+version = "2026.2"
 
 java {
     disableAutoTargetJvm()
-    sourceCompatibility = JavaVersion.VERSION_17
+    sourceCompatibility = JavaVersion.VERSION_25
 }
 
 publishing {
@@ -48,6 +48,10 @@ tasks.shadowJar {
     archiveClassifier = ""
 }
 
+tasks.jar {
+    archiveClassifier = "unshaded"
+}
+
 bukkit {
     main = "io.github.thebusybiscuit.extraheads.ExtraHeads"
     apiVersion = "1.18"
@@ -56,22 +60,25 @@ bukkit {
     website = "https://github.com/SlimefunGuguProject/ExtraHeads"
     depend = listOf("Slimefun")
     softDepend = listOf("PlaceholderAPI", "GuizhanLibPlugin")
+    foliaSupported = true
 }
 
-tasks {
-    runServer {
-        downloadPlugins {
-            val t = 114514
-            // Slimefun
-            url("https://builds.guizhanss.com/api/download/SlimefunGuguProject/Slimefun4/master/latest?t=${t}")
-            // GuizhanLibPlugin
-            url("https://builds.guizhanss.com/api/download/ybw0014/GuizhanLibPlugin/master/latest?t=${t}")
-            // SlimeHUD
-            url("https://builds.guizhanss.com/api/download/SlimefunGuguProject/SlimeHUD/master/latest?t=${t}")
-            // GuizhanCraft for testing convenient
-            url("https://builds.guizhanss.com/api/download/ybw0014/GuizhanCraft/master/latest?t=${t}")
+runPaper {
+    folia {
+        registerTask {
+            downloadPlugins {
+                val t = 114514
+                // Slimefun
+                url("https://builds.guizhanss.com/api/download/SlimefunGuguProject/Slimefun4/master/latest?t=${t}")
+                // GuizhanLibPlugin
+                url("https://builds.guizhanss.com/api/download/ybw0014/GuizhanLibPlugin/master/latest?t=${t}")
+                // SlimeHUD
+                url("https://builds.guizhanss.com/api/download/SlimefunGuguProject/SlimeHUD/master/latest?t=${t}")
+                // GuizhanCraft for testing convenient
+                url("https://builds.guizhanss.com/api/download/ybw0014/GuizhanCraft/master/latest?t=${t}")
+            }
+            jvmArgs("-Dcom.mojang.eula.agree=true")
+            minecraftVersion("26.2")
         }
-        jvmArgs("-Dcom.mojang.eula.agree=true")
-        minecraftVersion("1.21.11")
     }
 }
