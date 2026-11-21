@@ -106,7 +106,7 @@ public class ItemSetup {
             // https://minecraft-heads.com/custom-heads/head/105331-skeleton-horse
             registerHead(EntityType.SKELETON_HORSE, "ac7d8a16d3f0f98b598df93f2c2d34e75171cd52dbf4a1211d7b84c019416a40");
             // https://minecraft-heads.com/custom-heads/head/109991-snow-golem
-            registerHead(EntityType.SNOW_GOLEM, "e6f20aec528c3968dd8164f9d9336b081b3a2c7ecf189cf73df6f925e5a4ed14");
+            registerHead(EntityTypeX.SNOW_GOLEM, "e6f20aec528c3968dd8164f9d9336b081b3a2c7ecf189cf73df6f925e5a4ed14");
             // https://minecraft-heads.com/custom-heads/head/113925-trader-llama-grayed
             registerHead(EntityType.TRADER_LLAMA, "b1c54365d1ceac0da4a86b09067a17a4fd849eac422c79992642157996430289");
             // https://minecraft-heads.com/custom-heads/head/107004-tropical-fish-grayed
