@@ -24,11 +24,17 @@ dependencies {
 }
 
 group = "io.github.thebusybiscuit"
-version = "2026.2"
+version = "2026.3"
 
 java {
     disableAutoTargetJvm()
-    sourceCompatibility = JavaVersion.VERSION_25
+
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(25)
+    }
+
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
 }
 
 publishing {
@@ -63,6 +69,7 @@ bukkit {
     foliaSupported = true
 }
 
+// This fork targets Folia, so register the Folia run task instead of the default Paper one
 runPaper {
     folia {
         registerTask {
@@ -78,7 +85,7 @@ runPaper {
                 url("https://builds.guizhanss.com/api/download/ybw0014/GuizhanCraft/master/latest?t=${t}")
             }
             jvmArgs("-Dcom.mojang.eula.agree=true")
-            minecraftVersion("26.2")
+            minecraftVersion("26.3")
         }
     }
 }
